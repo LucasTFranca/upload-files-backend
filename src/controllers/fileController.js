@@ -1,5 +1,5 @@
 const { StatusCodes } = require('http-status-codes');
-const { getAllFilesVerification, getFileInfomationVerification } = require('../services/fileService');
+const { getAllFilesVerification, getFileInformationVerification } = require('../services/fileService');
 
 const getAllFiles = async (req, res, next) => {
   try {
@@ -12,7 +12,7 @@ const getAllFiles = async (req, res, next) => {
   }
 };
 
-const getFileInfomation = async (req, res, next) => {
+const getFileInformation = async (req, res, next) => {
   try {
     const { file } = req;
 
@@ -21,7 +21,7 @@ const getFileInfomation = async (req, res, next) => {
       url: `http://localhost:4000/files/${file.filename}`,
     };
 
-    await getFileInfomationVerification(file.filename);
+    await getFileInformationVerification(fileObject);
 
     return res.status(StatusCodes.CREATED).json(fileObject);
   } catch (error) {
@@ -32,5 +32,5 @@ const getFileInfomation = async (req, res, next) => {
 
 module.exports = {
   getAllFiles,
-  getFileInfomation,
+  getFileInformation,
 };

@@ -1,12 +1,12 @@
 const express = require('express');
-const { getAllFiles, getFileInfomation } = require('../controllers/fileController');
+const { getAllFiles, getFileInformation } = require('../controllers/fileController');
 const upload = require('../middlewares/upload');
 
 const fileRouter = express.Router();
 
 fileRouter.get('/', getAllFiles);
 
-fileRouter.post('/upload', upload, getFileInfomation);
+fileRouter.post('/upload', upload, getFileInformation);
 
 // fileRouter.get('/download/:name', );
 

@@ -8,7 +8,7 @@ const getAllFilesVerification = async () => {
   return files;
 };
 
-const getFileInfomationVerification = async ({ fileName, url }) => {
+const getFileInformationVerification = async ({ fileName, url }) => {
   if (!fileName || !url) throw errorConstructor(StatusCodes.BAD_REQUEST, 'File name or url is not defined');
 
   await insertFile(fileName, url);
@@ -16,5 +16,5 @@ const getFileInfomationVerification = async ({ fileName, url }) => {
 
 module.exports = {
   getAllFilesVerification,
-  getFileInfomationVerification,
+  getFileInformationVerification,
 };
