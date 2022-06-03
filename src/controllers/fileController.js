@@ -2,7 +2,7 @@ const path = require('path');
 const { StatusCodes } = require('http-status-codes');
 const { getAllFilesVerification, getFileInformationVerification, getFileVerification } = require('../services/fileService');
 
-const getAllFiles = async (req, res, next) => {
+const getAllFiles = async (_req, res, next) => {
   try {
     const files = await getAllFilesVerification();
 
