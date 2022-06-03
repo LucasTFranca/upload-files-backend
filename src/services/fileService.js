@@ -1,5 +1,5 @@
 const { StatusCodes } = require('http-status-codes');
-const { getFiles, insertFile } = require('../models/fileModel');
+const { getFiles, insertFile, findFile } = require('../models/fileModel');
 const errorConstructor = require('../utils/function/errorHandler');
 
 const getAllFilesVerification = async () => {
@@ -14,7 +14,16 @@ const getFileInformationVerification = async ({ fileName, url }) => {
   await insertFile(fileName, url);
 };
 
+const getFileVerification = async (name) => {
+  if (!name) throw errorConstructor(StatusCodes.BAD_REQUEST, 'File name is not defined');
+
+  const file = await findFile(name);
+
+  if (!file) throw errorConstructor(StatusCodes.NOT_FOUND, 'File not found');
+};
+
 module.exports = {
   getAllFilesVerification,
   getFileInformationVerification,
+  getFileVerification,
 };

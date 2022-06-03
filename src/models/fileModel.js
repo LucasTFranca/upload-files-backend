@@ -14,7 +14,16 @@ const insertFile = async (fileName, url) => {
   await db.collection('files').insertOne({ fileName, url });
 };
 
+const findFile = async (name) => {
+  const db = await connection();
+
+  const file = await db.collection('files').findOne({ fileName: name });
+
+  return file;
+};
+
 module.exports = {
   getFiles,
   insertFile,
+  findFile,
 };

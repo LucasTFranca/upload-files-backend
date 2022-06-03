@@ -1,5 +1,6 @@
+const path = require('path');
 const { StatusCodes } = require('http-status-codes');
-const { getAllFilesVerification, getFileInformationVerification } = require('../services/fileService');
+const { getAllFilesVerification, getFileInformationVerification, getFileVerification } = require('../services/fileService');
 
 const getAllFiles = async (req, res, next) => {
   try {
@@ -30,7 +31,22 @@ const getFileInformation = async (req, res, next) => {
   }
 };
 
+const getFile = async (req, res, next) => {
+  try {
+    const { name } = req.params;
+    const pathFile = path.join(__dirname, `../files/${name}`);
+
+    await getFileVerification(name);
+
+    return res.status(StatusCodes.OK).sendFile(pathFile);
+  } catch (error) {
+    console.log(`GET FILE ${error}`);
+    return next(error);
+  }
+};
+
 module.exports = {
   getAllFiles,
   getFileInformation,
+  getFile,
 };
