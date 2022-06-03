@@ -8,6 +8,13 @@ const getFiles = async () => {
   return files;
 };
 
+const insertFile = async (fileName, url) => {
+  const db = await connection();
+
+  await db.collection('files').insertOne({ fileName, url });
+};
+
 module.exports = {
   getFiles,
+  insertFile,
 };

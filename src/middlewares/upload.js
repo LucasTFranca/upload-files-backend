@@ -1,8 +1,11 @@
-const errorMiddleware = (error, _req, res, _next) => {
-  if (error.status) return res.status(error.status).json({ message: error.message });
+const multer = require('multer');
+const path = require('path');
 
-  console.log(error);
-  return res.status(500).json({ error: 'Internal server error' });
-};
+const storage = multer.diskStorage({
+  destination: (_req, _file, callback) => callback(null, path.resolve(__dirname, '..', 'files')),
+  filename: (_req, file, callback) => callback(null, `${Date.now()}-${file.originalname}`),
+});
 
-module.exports = errorMiddleware;
+const upload = multer({ storage }).single('file');
+
+module.exports = upload;
