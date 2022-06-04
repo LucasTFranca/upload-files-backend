@@ -19,7 +19,7 @@ const getFileInformation = async (req, res, next) => {
 
     const fileObject = {
       fileName: file.filename,
-      url: `http://localhost:4000/files/${file.filename}`,
+      url: `http://localhost:4000/file/download/${file.filename}`,
     };
 
     await getFileInformationVerification(fileObject);
