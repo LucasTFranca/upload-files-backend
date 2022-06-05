@@ -6,7 +6,7 @@ const OPTIONS = {
   useUnifiedTopology: true,
 };
 
-const MONGO_DB_URL = `mongodb://${process.env.HOST || 'mongodb'}:27017/file-storage`;
+const MONGO_DB_URL = process.env.HOST;
 const DB_NAME = 'file-storage';
 
 let db = null;
