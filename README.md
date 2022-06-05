@@ -36,8 +36,8 @@ npm install
 
 ## Configuração
 
-Vá no arquivo `.env.example` e modifique o valor da chave `HOST`,
-por esse url `mongodb://127.0.0.1:27017/file-storage`.
+Vá no arquivo `.env.example` e renomeei o nome dele para `.env`, depois abra o arquivo
+e modifique o valor da chave `HOST` por esse url `mongodb://127.0.0.1:27017/file-storage`.
 
 ## Como Utilizar
 
